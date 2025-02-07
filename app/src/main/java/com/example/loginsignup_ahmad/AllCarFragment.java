@@ -2,11 +2,25 @@ package com.example.loginsignup_ahmad;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
+
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
+
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -14,6 +28,11 @@ import android.view.ViewGroup;
  * create an instance of this fragment.
  */
 public class AllCarFragment extends Fragment {
+    private FireBaseServices fbs;
+    private ArrayList<Car> rests;
+    private RecyclerView rvRests;
+    private CarAdapter adapter;
+
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -61,4 +80,37 @@ public class AllCarFragment extends Fragment {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_all_car, container, false);
     }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+
+        fbs = FireBaseServices.getInstance();
+        rests = new ArrayList<>();
+        rvRests = getView().findViewById(R.id.rvCarsRestFragment);
+        adapter = new CarAdapter(getActivity(), rests);
+        rvRests.setAdapter(adapter);
+        rvRests.setHasFixedSize(true);
+        rvRests.setLayoutManager(new LinearLayoutManager(getActivity()));
+        fbs.getFire().collection("Cars").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+            @Override
+            public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+
+                for (DocumentSnapshot dataSnapshot: queryDocumentSnapshots.getDocuments()){
+                    Car rest = dataSnapshot.toObject(Car.class);
+
+                    rests.add(rest);
+                }
+
+                adapter.notifyDataSetChanged();
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(getActivity(), "No data available", Toast.LENGTH_SHORT).show();
+                Log.e("AllCarFragment", e.getMessage());
+            }
+        });
+    }
 }
+

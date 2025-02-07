@@ -3,12 +3,77 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".AddCarFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="match_parent">
 
+        <EditText
+            android:id="@+id/etNameAddCarFragment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="77dp"
+            android:layout_marginBottom="33dp"
+            android:ems="10"
+            android:hint="name..."
+            android:inputType="text"
+            android:minHeight="48dp"
+            app:layout_constraintBottom_toTopOf="@+id/etDescAddCarFragment"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/etDescAddCarFragment"
+            android:layout_width="204dp"
+            android:layout_height="0dp"
+            android:layout_marginBottom="37dp"
+            android:ems="10"
+            android:gravity="start|top"
+            android:hint="description..."
+            android:inputType="textMultiLine"
+            app:layout_constraintBottom_toTopOf="@+id/etAddressAddRestaurantFragment"
+            app:layout_constraintStart_toStartOf="@+id/etNameAddCarFragment"
+            app:layout_constraintTop_toBottomOf="@+id/etNameAddCarFragment"
+            tools:ignore="UnknownId,TouchTargetSizeCheck" />
+
+        <EditText
+            android:id="@+id/etAddressAddCarFragment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="32dp"
+            android:ems="10"
+            android:hint="address..."
+            android:inputType="text|textPostalAddress"
+            android:minHeight="48dp"
+            app:layout_constraintBottom_toTopOf="@+id/etPhoneAddCarFragment"
+            app:layout_constraintStart_toStartOf="@+id/etDescAddCarFragment"
+            app:layout_constraintTop_toBottomOf="@+id/etDescAddCarFragment" />
+
+        <EditText
+            android:id="@+id/etPhoneAddCarFragment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="68dp"
+            android:ems="10"
+            android:hint="phone..."
+            android:inputType="phone"
+            android:minHeight="48dp"
+            app:layout_constraintBottom_toTopOf="@+id/btnAddCarFragment"
+            app:layout_constraintStart_toStartOf="@+id/etAddressAddCarFragment"
+            app:layout_constraintTop_toBottomOf="@+id/etAddressAddCarFragment" />
+
+        <Button
+            android:id="@+id/btnAddCarFragment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="249dp"
+            android:text="Add"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/etPhoneAddCarFragment" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>
