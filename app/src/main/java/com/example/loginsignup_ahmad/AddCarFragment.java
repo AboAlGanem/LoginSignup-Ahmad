@@ -1,9 +1,12 @@
 package com.example.loginsignup_ahmad;
 
+import static android.app.PendingIntent.getActivity;
+
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -11,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
@@ -22,11 +26,16 @@ import com.google.firebase.firestore.DocumentReference;
  * Use the {@link AddCarFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class AddCarFragment extends Fragment {
-    private FireBaseServices fbs;
-    private EditText etName, etDescription, etAddress, etPhone;
+public class AddCarFragment {
+    private static final int GALLERY_REQUEST_CODE = 123;
+    ImageView img;
+    private String imageStr;
+    private EditText etnameCar,ethorse_power,etOwners,etColor,etCar_num,
+            etManufacturer,etYear,etCar_model,etTest,etkilometre,
+            etEngine_capacity,etGear_shifting_model,etPrice, etPhone,etDescription,etAddress;
     private Button btnAdd;
-
+    private FireBaseServices fbs;
+    private Utils utils;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -74,7 +83,6 @@ public class AddCarFragment extends Fragment {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_add_car, container, false);
     }
-
     @Override
     public void onStart() {
         super.onStart();
@@ -85,17 +93,17 @@ public class AddCarFragment extends Fragment {
 
     private void connectComponents() {
         fbs = FireBaseServices.getInstance();
-        etName = getView().findViewById(R.id.etNameAddCarFragment);
+        etnameCar = getView().findViewById(R.id.etNameAddCarFragment);
         etDescription = getView().findViewById(R.id.etDescAddCarFragment);
-        etAddress = getView().findViewById(R.id.etAddressAddRestaurantFragment);
+        etAddress = getView().findViewById(R.id.etAddressAddCarFragment);
         etPhone = getView().findViewById(R.id.etPhoneAddCarFragment);
-        btnAdd = getView().findViewById(R.id.btnAddCarFragment);
+        btnAdd = getView().findViewById(R.id.btnAddAddCarFragment);
 
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 // get data from screen
-                String name = etName.getText().toString();
+                String name = etnameCar.getText().toString();
                 String description = etDescription.getText().toString();
                 String address = etAddress.getText().toString();
                 String phone = etPhone.getText().toString();
