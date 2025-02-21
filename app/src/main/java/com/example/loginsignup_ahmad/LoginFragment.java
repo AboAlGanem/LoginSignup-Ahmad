@@ -115,6 +115,7 @@ public class LoginFragment extends Fragment {
                     @Override
                     public void onSuccess(AuthResult authResult) {
                         Toast.makeText(getActivity(), "Successfully login up", Toast.LENGTH_SHORT).show();
+                        gotoAddCarFragment();
 
                     }
 
@@ -137,6 +138,11 @@ public class LoginFragment extends Fragment {
     private void gotoforgotFragment() {
         FragmentTransaction ft=getActivity().getSupportFragmentManager().beginTransaction();
         ft.replace(R.id.FrameLayoutsMain,new Forgot_passwordFragment());
+        ft.commit();
+    }
+    private void gotoAddCarFragment() {
+        FragmentTransaction ft=getActivity().getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.FrameLayoutsMain,new AddCarFragment());
         ft.commit();
     }
 }
