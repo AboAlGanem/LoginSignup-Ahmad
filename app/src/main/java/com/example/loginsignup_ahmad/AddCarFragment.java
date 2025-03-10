@@ -1,16 +1,22 @@
 package com.example.loginsignup_ahmad;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Gallery;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
@@ -25,8 +31,10 @@ import com.google.firebase.firestore.DocumentReference;
 public class AddCarFragment extends Fragment {
 
     private FireBaseServices fbs;
-    private EditText etName, etDescription, etAddress,etPrice, etPhone;
+    private Utils utils;
+    private EditText etName, etDescription, etAddress, etPrice, etPhone;
     private Button btnAdd;
+    ImageView img;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -36,6 +44,7 @@ public class AddCarFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
 
     public AddCarFragment() {
         // Required empty public constructor
@@ -85,17 +94,31 @@ public class AddCarFragment extends Fragment {
 
     private void connectComponents() {
         fbs = FireBaseServices.getInstance();
+        utils = Utils.getInstance();
         etName = getView().findViewById(R.id.etNameAddCarFragment);
         etDescription = getView().findViewById(R.id.etDescAddCarFragment);
         etAddress = getView().findViewById(R.id.etAddressAddCarFragment);
         etPhone = getView().findViewById(R.id.etPhoneAddCarFragment);
         btnAdd = getView().findViewById(R.id.btnAddAddCarFragment);
+        img = getView().findViewById(R.id.IVPreviewImage);
+        img.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openGallery();
+            }
 
+            private void openGallery() {
+                Intent galleryIntent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                startActivityForResult(galleryIntent, 123);
+            }
+
+        });
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 // get data from screen
                 String name = etName.getText().toString();
+                utils = Utils.getInstance();
                 String description = etDescription.getText().toString();
                 String address = etAddress.getText().toString();
                 String phone = etPhone.getText().toString();
@@ -110,7 +133,7 @@ public class AddCarFragment extends Fragment {
                 // add data to firestore
                 String price = "";
                 String photo = "";
-                Car rest = new Car( name,  description, address,phone,price, "");
+                Car rest = new Car(name, description, address, phone, price, "");
 
                 fbs.getFire().collection("Cars").add(rest).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                     @Override
@@ -128,4 +151,15 @@ public class AddCarFragment extends Fragment {
             }
         });
     }
+
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == 123 && resultCode == getActivity().RESULT_OK && data != null) {
+            Uri selectedImageUri = data.getData();
+            img.setImageURI(selectedImageUri);
+            Utils.uploadImage(getActivity(), selectedImageUri);
+        }
+    }
 }
+

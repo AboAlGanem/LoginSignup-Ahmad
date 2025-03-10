@@ -19,8 +19,8 @@ import java.util.UUID;
 public class Utils {
     private static Utils instance;
 
-    private FireBaseServices fbs;
-    private String imageStr;
+    private static FireBaseServices fbs;
+    private static String imageStr;
 
     public Utils()
     {
@@ -52,7 +52,7 @@ public class Utils {
         dialog.show();
     }
 
-    public void uploadImage(Context context, Uri selectedImageUri) {
+    public static void uploadImage(Context context, Uri selectedImageUri) {
         if (selectedImageUri != null) {
             imageStr = "images/" + UUID.randomUUID() + ".jpg"; //+ selectedImageUri.getLastPathSegment();
             StorageReference imageRef = fbs.getStorage().getReference().child("images/" + selectedImageUri.getLastPathSegment());

@@ -98,6 +98,16 @@
             app:layout_constraintStart_toStartOf="@+id/etDescAddCarFragment"
             app:layout_constraintTop_toBottomOf="@+id/etAddressAddCarFragment"
             tools:ignore="MissingConstraints" />
-
+        <ImageView
+            android:id="@+id/IVPreviewImage"
+            android:layout_width="201dp"
+            android:layout_height="201dp"
+            android:layout_marginTop="56dp"
+            android:layout_marginBottom="39dp"
+            android:src="@drawable/ic_launcher_background"
+            app:layout_constraintBottom_toTopOf="@+id/tvSalonName"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>
