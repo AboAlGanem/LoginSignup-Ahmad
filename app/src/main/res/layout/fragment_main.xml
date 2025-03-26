@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".MainFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_marginStart="106dp"
+            android:layout_marginTop="124dp"
+            android:layout_marginEnd="106dp"
+            android:layout_marginBottom="64dp"
+            android:backgroundTint="#00FFFFFF"
+            app:layout_constraintBottom_toTopOf="@+id/btnGoogleLoginMainFragment"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/logo"
+            tools:ignore="MissingConstraints" />
+
+        <Button
+            android:id="@+id/btnLoginMainFragment"
+            android:layout_width="237dp"
+            android:layout_height="51dp"
+            android:layout_marginStart="88dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="87dp"
+            android:layout_marginBottom="2dp"
+            android:backgroundTint="#FFFFFF"
+            android:text="Sign in"
+            android:textColor="#5d6265"
+            app:cornerRadius="7dp"
+            app:layout_constraintBottom_toTopOf="@+id/textView4"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnGoogleLoginMainFragment"
+            app:strokeColor="#5d6265"
+            app:strokeWidth="2dp"
+            tools:ignore="MissingConstraints" />
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="40dp"
+            android:layout_height="32dp"
+            android:layout_marginStart="199dp"
+            android:layout_marginTop="9dp"
+            android:layout_marginEnd="172dp"
+            android:text="or"
+            android:textColor="#5d6265"
+            app:layout_constraintBottom_toTopOf="@+id/tvSignUpMainFragment"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnLoginMainFragment"
+            tools:ignore="MissingConstraints" />
+
+        <TextView
+            android:id="@+id/tvSignUpMainFragment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="108dp"
+            android:layout_marginEnd="109dp"
+            android:layout_marginBottom="170dp"
+            android:text="Don't have an account? Sign Up"
+            android:textColor="#5d6265"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView4"
+            tools:ignore="MissingConstraints" />
+
+        <Button
+            android:id="@+id/btnGoogleLoginMainFragment"
+            android:layout_width="237dp"
+            android:layout_height="51dp"
+            android:layout_marginStart="88dp"
+            android:layout_marginTop="65dp"
+            android:layout_marginEnd="87dp"
+            android:backgroundTint="#46505c"
+            android:text="Connect With Google"
+            app:cornerRadius="7dp"
+            app:layout_constraintBottom_toTopOf="@+id/btnLoginMainFragment"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView2"
+            tools:ignore="MissingConstraints" />
+
+        <ImageView
+            android:id="@+id/imageView8"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/img2"
+            app:layout_constraintBottom_toBottomOf="@+id/btnGoogleLoginMainFragment"
+            app:layout_constraintEnd_toEndOf="@+id/btnGoogleLoginMainFragment"
+            app:layout_constraintHorizontal_bias="0.082"
+            app:layout_constraintStart_toStartOf="@+id/btnGoogleLoginMainFragment"
+            app:layout_constraintTop_toTopOf="@+id/btnGoogleLoginMainFragment" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>

@@ -95,12 +95,12 @@ public class AddCarFragment extends Fragment {
     private void connectComponents() {
         fbs = FireBaseServices.getInstance();
         utils = Utils.getInstance();
-        etName = getView().findViewById(R.id.etNameAddCarFragment);
-        etDescription = getView().findViewById(R.id.etDescAddCarFragment);
-        etAddress = getView().findViewById(R.id.etAddressAddCarFragment);
-        etPhone = getView().findViewById(R.id.etPhoneAddCarFragment);
-        btnAdd = getView().findViewById(R.id.btnAddAddCarFragment);
-        img = getView().findViewById(R.id.IVPreviewImage);
+        etName = getView().findViewById(R.id.etNameCarFragment);
+        etDescription = getView().findViewById(R.id.etDescCarFragment);
+        etAddress = getView().findViewById(R.id.etAddressFragment);
+        etPhone = getView().findViewById(R.id.etPhoneFragment);
+        btnAdd = getView().findViewById(R.id.btnAddCarFragment);
+        img = getView().findViewById(R.id.imageView);
         img.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

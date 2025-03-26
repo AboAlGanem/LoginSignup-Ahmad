@@ -7,107 +7,157 @@
     android:layout_height="match_parent"
     tools:context=".AddCarFragment">
 
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:ignore="MissingClass">
+        android:layout_height="match_parent">
 
-        <Button
-            android:id="@+id/btnAddAddCarFragment"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="312dp"
-            android:text="Add"
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="140dp"
+            android:layout_marginBottom="23dp"
+            android:src="@drawable/logo"
+            app:layout_constraintBottom_toTopOf="@+id/etNameCarFragment"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/btnBackAddCarFragment"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageButton
+            android:id="@+id/btnBackAddCarFragment"
+            android:layout_width="75dp"
+            android:layout_height="58dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="71dp"
+            android:layout_marginBottom="378dp"
+            android:backgroundTint="#FFFFFF"
+            android:src="@drawable/baseline_arrow_back_24"
+            app:layout_constraintBottom_toTopOf="@+id/etDescCarFragment"
+            app:layout_constraintEnd_toStartOf="@+id/imageView"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="TouchTargetSizeCheck" />
+
+        <ImageView
+            android:id="@+id/ivImageAddBathSanitaryFragment"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="74dp"
+            android:layout_marginEnd="74dp"
+            android:layout_marginBottom="20dp"
+            android:src="@drawable/baseline_insert_photo_24"
+            app:layout_constraintBottom_toTopOf="@+id/textView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/etDescCarFragment" />
+
+        <EditText
+            android:id="@+id/etNameCarFragment"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="62dp"
+            android:layout_marginEnd="62dp"
+            android:layout_marginBottom="18dp"
+            android:ems="10"
+            android:hint="    Car Name..."
+            android:inputType="text"
+            app:layout_constraintBottom_toTopOf="@+id/etPriceFragment"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+        <EditText
+            android:id="@+id/etDescCarFragment"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="47dp"
+            android:layout_marginEnd="47dp"
+            android:layout_marginBottom="350dp"
+            android:ems="10"
+            android:hint="    Description..."
+            android:inputType="text"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/etDescAddCarFragment"
-            tools:ignore="MissingConstraints" />
+            app:layout_constraintTop_toBottomOf="@+id/btnBackAddCarFragment" />
 
         <EditText
-            android:id="@+id/etNameAddCarFragment"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="36dp"
-            android:layout_marginBottom="12dp"
-            android:ems="10"
-            android:hint="name..."
-            android:inputType="text"
-            android:minHeight="48dp"
-            app:layout_constraintBottom_toTopOf="@+id/etPhoneAddCarFragment"
-            app:layout_constraintStart_toStartOf="@+id/etPhoneAddCarFragment"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="MissingConstraints" />
-
-        <EditText
-            android:id="@+id/etDescAddCarFragment"
-            android:layout_width="222dp"
+            android:id="@+id/etPhoneFragment"
+            android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginBottom="22dp"
+
+            android:layout_marginStart="59dp"
+            android:layout_marginEnd="59dp"
+            android:layout_marginBottom="16dp"
             android:ems="10"
-            android:gravity="start|top"
-            android:hint="description..."
-            android:inputType="textMultiLine"
-            app:layout_constraintBottom_toTopOf="@+id/btnAddAddCarFragment"
+            android:hint="    Phone..."
+            android:inputType="text"
+            app:layout_constraintBottom_toTopOf="@+id/etDescCarFragment"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/etPriceAddCarFragment"
-            tools:ignore="MissingConstraints" />
+            app:layout_constraintTop_toBottomOf="@+id/etAddressFragment" />
 
         <EditText
-            android:id="@+id/etAddressAddCarFragment"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="2dp"
-            android:layout_marginBottom="25dp"
+            android:id="@+id/etPriceFragment"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="62dp"
+            android:layout_marginEnd="62dp"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/edittexbackground"
             android:ems="10"
-            android:hint="address..."
-            android:inputType="text|textPostalAddress"
-            android:minHeight="48dp"
-            app:layout_constraintBottom_toTopOf="@+id/etPriceAddCarFragment"
-            app:layout_constraintEnd_toEndOf="@+id/etPriceAddCarFragment"
-            app:layout_constraintTop_toBottomOf="@+id/etPhoneAddCarFragment"
-            tools:ignore="MissingConstraints" />
-
-        <EditText
-            android:id="@+id/etPhoneAddCarFragment"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="2dp"
-            android:layout_marginBottom="8dp"
-            android:ems="10"
-            android:hint="phone..."
-            android:inputType="phone"
-            android:minHeight="48dp"
-            app:layout_constraintBottom_toTopOf="@+id/etAddressAddCarFragment"
-            app:layout_constraintStart_toStartOf="@+id/etAddressAddCarFragment"
-            app:layout_constraintTop_toBottomOf="@+id/etNameAddCarFragment"
-            tools:ignore="MissingConstraints" />
-
-        <EditText
-            android:id="@+id/etPriceAddCarFragment"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="2dp"
-            android:layout_marginBottom="11dp"
-            android:ems="10"
-            android:hint="Price..."
-            android:inputType="text|textPostalAddress"
-            android:minHeight="48dp"
-            app:layout_constraintBottom_toTopOf="@+id/etDescAddCarFragment"
-            app:layout_constraintStart_toStartOf="@+id/etDescAddCarFragment"
-            app:layout_constraintTop_toBottomOf="@+id/etAddressAddCarFragment"
-            tools:ignore="MissingConstraints" />
-        <ImageView
-            android:id="@+id/IVPreviewImage"
-            android:layout_width="201dp"
-            android:layout_height="201dp"
-            android:layout_marginTop="56dp"
-            android:layout_marginBottom="39dp"
-            android:src="@drawable/ic_launcher_background"
-            app:layout_constraintBottom_toTopOf="@+id/tvSalonName"
+            android:hint="    Car Price..."
+            android:inputType="text"
+            app:layout_constraintBottom_toTopOf="@+id/etAddressFragment"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/etNameCarFragment" />
+
+        <EditText
+            android:id="@+id/etAddressFragment"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="62dp"
+            android:layout_marginEnd="62dp"
+            android:layout_marginBottom="15dp"
+            android:background="@drawable/edittexbackground"
+            android:ems="10"
+            android:hint="    Address..."
+            android:inputType="text"
+            app:layout_constraintBottom_toTopOf="@+id/etPhoneFragment"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/etPriceFragment" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="31dp"
+            android:text="Add Photo of the car"
+            android:textColor="#5d6265"
+            app:layout_constraintBottom_toTopOf="@+id/btnAddCarFragment"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.457"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ivImageAddBathSanitaryFragment" />
+
+        <Button
+            android:id="@+id/btnAddCarFragment"
+            android:layout_width="269dp"
+            android:layout_height="64dp"
+            android:layout_marginStart="63dp"
+            android:layout_marginEnd="63dp"
+            android:backgroundTint="#46505c"
+            android:text="Add Car"
+            app:cornerRadius="7dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.312"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>
