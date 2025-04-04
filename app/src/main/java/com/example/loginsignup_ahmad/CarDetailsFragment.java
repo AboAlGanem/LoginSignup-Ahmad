@@ -140,12 +140,24 @@ public class CarDetailsFragment extends Fragment {
         tvPrice=getView().findViewById(R.id.tvPriceDetailsFragment);
         ivCarPhoto = getView().findViewById(R.id.ivCarDetailsFragment);
 
+
         Bundle args = getArguments();
         if (args != null) {
             myCar = args.getParcelable("car");
             if (myCar != null) {
                 tvnameCar.setText(myCar.getName());
+                tvhorse_power.setText(myCar.getHorse_power()+" HP");
+                tvOwners.setText(myCar.getOwners());
                 tvPhone.setText(myCar.getPhone());
+                tvCar_num.setText(myCar.getCar_num());
+                tvManufacturer.setText(myCar.getManufacturer());
+                tvYear.setText(myCar.getYear());
+                tvColor.setText(myCar.getColor());
+                tvCar_model.setText(myCar.getCar_model());
+                tvTest.setText(myCar.getTest());
+                tvkilometre.setText(myCar.getKilometre()+" Km");
+                tvEngine_capacity.setText(myCar.getEngine_capacity());
+                tvGear_shifting_model.setText(myCar.getGear_shifting_model());
                 tvPrice.setText(myCar.getPrice()+" ₪");
                 if (myCar.getPhoto() == null || myCar.getPhoto().isEmpty())
                 {

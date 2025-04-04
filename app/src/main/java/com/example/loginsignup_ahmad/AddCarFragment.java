@@ -30,11 +30,14 @@ import com.google.firebase.firestore.DocumentReference;
  */
 public class AddCarFragment extends Fragment {
 
+    ImageView img;
+    private String imageStr;
+    private EditText etname,ethorse_power,etOwners,etColor,etCar_num,
+            etManufacturer,etYear,etCar_model,etTest,etkilometre,
+            etEngine_capacity,etGear_shifting_model,etPrice, etPhone;
+    private Button btnAddCar;
     private FireBaseServices fbs;
     private Utils utils;
-    private EditText etName, etDescription, etAddress, etPrice, etPhone;
-    private Button btnAdd;
-    ImageView img;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -95,10 +98,19 @@ public class AddCarFragment extends Fragment {
     private void connectComponents() {
         fbs = FireBaseServices.getInstance();
         utils = Utils.getInstance();
-        etName = getView().findViewById(R.id.etNameCarFragment);
-        etDescription = getView().findViewById(R.id.etDescCarFragment);
-        etAddress = getView().findViewById(R.id.etAddressFragment);
-        etPhone = getView().findViewById(R.id.etPhoneFragment);
+        etname=getView().findViewById(R.id.etNameCarAddFragment);
+        ethorse_power=getView().findViewById(R.id.etHorsePowerAddFragment);
+        etOwners=getView().findViewById(R.id.etOwnersAddFragment);
+        etPhone=getView().findViewById(R.id.etPhoneAddFragment);
+        etCar_num=getView().findViewById(R.id.etCarNumberAddFragment);
+        etManufacturer=getView().findViewById(R.id.etManufacturerAddFragment);
+        //etYear=getView().findViewById(R.id.etYearAddFragment);
+        etCar_model=getView().findViewById(R.id.etCarModelAddFragment);
+        etTest=getView().findViewById(R.id.etTestAddFragment);
+        etkilometre=getView().findViewById(R.id.etKilometreAddFragment);
+        etEngine_capacity=getView().findViewById(R.id.etEngineCapacityAddFragment);
+        etGear_shifting_model=getView().findViewById(R.id.etGearShiftAddFragment);
+        etPrice=getView().findViewById(R.id.etPriceAddFragment);
         btnAdd = getView().findViewById(R.id.btnAddCarFragment);
         img = getView().findViewById(R.id.imageView);
         img.setOnClickListener(new View.OnClickListener() {
@@ -117,15 +129,32 @@ public class AddCarFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 // get data from screen
-                String name = etName.getText().toString();
                 utils = Utils.getInstance();
-                String description = etDescription.getText().toString();
                 String address = etAddress.getText().toString();
                 String phone = etPhone.getText().toString();
-
+                String nameCar=etname.getText().toString();
+                String horse_power=ethorse_power.getText().toString();
+                String owners=etOwners.getText().toString();
+                String car_num=etCar_num.getText().toString();
+                String manufacturer=etManufacturer.getText().toString();
+                String Car_model=etCar_model.getText().toString();
+                String test=etTest.getText().toString();
+                String kilometre=etkilometre.getText().toString();
+                String Engine_capacity=etEngine_capacity.getText().toString();
+                String Gear_shifting_model="DSG";
+                String price=etPrice.getText().toString();
                 // data validation
-                if (name.trim().isEmpty() || description.trim().isEmpty() ||
-                        address.trim().isEmpty() || phone.trim().isEmpty()) {
+                if ((nameCar.trim().isEmpty()                                        ||
+                        horse_power.trim().isEmpty()                                ||
+                        owners.trim().isEmpty()                                     ||
+                        car_num.trim().isEmpty()                                    ||
+                        manufacturer.trim().isEmpty()                               ||
+                        Car_model.trim().isEmpty()                                  ||
+                        test.trim().isEmpty()                                       ||
+                        kilometre.trim().isEmpty()                                  ||
+                        Engine_capacity.trim().isEmpty()                            ||
+                        Gear_shifting_model.trim().isEmpty()                        ||
+                        price.trim().isEmpty())){
                     Toast.makeText(getActivity(), "Some fields are empty!", Toast.LENGTH_LONG).show();
                     return;
                 }
@@ -133,7 +162,9 @@ public class AddCarFragment extends Fragment {
                 // add data to firestore
                 String price = "";
                 String photo = "";
-                Car rest = new Car(name, description, address, phone, price, "");
+                Car rest = new Car(name, horse_power, owners, phone,
+                        car_num, manufacturer, Car_model,
+                        test, kilometre, Engine_capacity, Gear_shifting_model, price, fbs.getSelectedImageURL().toString());
 
                 fbs.getFire().collection("Cars").add(rest).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                     @Override
