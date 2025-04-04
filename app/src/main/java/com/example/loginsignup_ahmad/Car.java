@@ -7,15 +7,16 @@ public class Car {
     private String phone;
     private  String   price;
     private String photo;
+    private String car_num;
 
     public Car(String name, String description, String address, String phone,String price, String photo){
         this.name = name;
         this.description = description;
         this.address = address;
         this.phone = phone;
-        this.phone = phone;
         this.price = price;
         this.photo = photo;
+        this.car_num = car_num;
     }
 
     public String getName() {
