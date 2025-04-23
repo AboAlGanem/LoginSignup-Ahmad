@@ -145,7 +145,7 @@ public class CarDetailsFragment extends Fragment {
         if (args != null) {
             myCar = args.getParcelable("car");
             if (myCar != null) {
-                tvnameCar.setText(myCar.getName());
+                tvnameCar.setText(myCar.getNameCar());
                 tvhorse_power.setText(myCar.getHorse_power()+" HP");
                 tvOwners.setText(myCar.getOwners());
                 tvPhone.setText(myCar.getPhone());
@@ -161,7 +161,7 @@ public class CarDetailsFragment extends Fragment {
                 tvPrice.setText(myCar.getPrice()+" ₪");
                 if (myCar.getPhoto() == null || myCar.getPhoto().isEmpty())
                 {
-                    Picasso.get().load(R.drawable.ic_fav).into(ivCarPhoto);
+                    Picasso.get().load(R.drawable.img).into(ivCarPhoto);
                 }
                 else {
                     Picasso.get().load(myCar.getPhoto()).into(ivCarPhoto);
@@ -203,7 +203,7 @@ public class CarDetailsFragment extends Fragment {
 
     private void sendSMS() {
         String phoneNumber = myCar.getPhone();
-        String message = "I am Interested in your  "+myCar.getName()+"  car: " + myCar.getCar_num();
+        String message = "I am Interested in your  "+myCar.getNameCar()+"  car: " + myCar.getCar_num();
 
         try {
             SmsManager smsManager = SmsManager.getDefault();
@@ -239,7 +239,7 @@ public class CarDetailsFragment extends Fragment {
         Intent sendIntent = new Intent(Intent.ACTION_SEND);
         //  Intent sendIntent = new Intent(Intent.ACTION_SENDTO);
         sendIntent.setType("text/plain");
-        sendIntent.putExtra(Intent.EXTRA_TEXT, " I am Interested in your  " +myCar.getName()+ "  car:  "  + myCar.getCar_num());
+        sendIntent.putExtra(Intent.EXTRA_TEXT, " I am Interested in your  " +myCar.getNameCar()+ "  car:  "  + myCar.getCar_num());
         sendIntent.putExtra("jid", smsNumber + "@s.whatsapp.net"); //phone number without "+" prefix
         sendIntent.setPackage("com.whatsapp");
 

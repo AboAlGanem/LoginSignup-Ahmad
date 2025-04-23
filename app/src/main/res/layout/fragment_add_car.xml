@@ -15,7 +15,6 @@
         android:orientation="vertical"
         android:padding="16dp">
 
-        <!-- Car Number -->
         <EditText
             android:id="@+id/etCarNumberAddFragment"
             android:layout_width="match_parent"
@@ -24,7 +23,6 @@
             android:inputType="number"
             android:minHeight="48dp" />
 
-        <!-- Car Name -->
         <EditText
             android:id="@+id/etNameCarAddFragment"
             android:layout_width="match_parent"
@@ -32,7 +30,6 @@
             android:hint="Name of Car"
             android:minHeight="48dp" />
 
-        <!-- Car Model -->
         <EditText
             android:id="@+id/etCarModelAddFragment"
             android:layout_width="match_parent"
@@ -40,7 +37,6 @@
             android:hint="Car Model"
             android:minHeight="48dp" />
 
-        <!-- Manufacturer -->
         <EditText
             android:id="@+id/etManufacturerAddFragment"
             android:layout_width="match_parent"
@@ -48,7 +44,6 @@
             android:hint="Manufacturer"
             android:minHeight="48dp" />
 
-        <!-- Phone -->
         <EditText
             android:id="@+id/etPhoneAddFragment"
             android:layout_width="match_parent"
@@ -57,9 +52,6 @@
             android:inputType="number"
             android:minHeight="48dp" />
 
-        <!-- Car Type -->
-
-        <!-- Year of Test -->
         <EditText
             android:id="@+id/etTestAddFragment"
             android:layout_width="match_parent"
@@ -68,7 +60,6 @@
             android:inputType="number"
             android:minHeight="48dp" />
 
-        <!-- Kilometres -->
         <EditText
             android:id="@+id/etKilometreAddFragment"
             android:layout_width="match_parent"
@@ -77,7 +68,6 @@
             android:inputType="number"
             android:minHeight="48dp" />
 
-        <!-- Engine Capacity -->
         <EditText
             android:id="@+id/etEngineCapacityAddFragment"
             android:layout_width="match_parent"
@@ -86,9 +76,6 @@
             android:inputType="number"
             android:minHeight="48dp" />
 
-        <!-- ... other views ... -->
-
-        <!-- Owners -->
         <EditText
             android:id="@+id/etOwnersAddFragment"
             android:layout_width="match_parent"
@@ -96,7 +83,6 @@
             android:hint="Owners"
             android:minHeight="48dp" />
 
-        <!-- Horse Power -->
         <EditText
             android:id="@+id/etHorsePowerAddFragment"
             android:layout_width="match_parent"
@@ -105,7 +91,6 @@
             android:inputType="number"
             android:minHeight="48dp" />
 
-        <!-- Gear Shifting Model -->
         <EditText
             android:id="@+id/etGearShiftAddFragment"
             android:layout_width="match_parent"
@@ -113,7 +98,6 @@
             android:hint="Gear Shifting Model"
             android:minHeight="48dp" />
 
-        <!-- Price -->
         <EditText
             android:id="@+id/etPriceAddFragment"
             android:layout_width="match_parent"
@@ -122,19 +106,19 @@
             android:inputType="number"
             android:minHeight="48dp" />
 
-        <!-- Buttons for actions -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:gravity="center">
+
             <TextView
                 android:layout_width="120sp"
                 android:layout_height="40sp"
-                android:textStyle="bold"
-                android:textSize="15sp"
                 android:text="insert a image:->"
-                />
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
             <ImageView
                 android:id="@+id/ivCarAddCarFragment"
                 android:layout_width="100dp"
@@ -142,7 +126,7 @@
                 android:src="@drawable/ic_launcher_background" />
 
             <Button
-                android:id="@+id/btnAddCarADDFragment"
+                android:id="@+id/btnAddCarFragment"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="ADD"

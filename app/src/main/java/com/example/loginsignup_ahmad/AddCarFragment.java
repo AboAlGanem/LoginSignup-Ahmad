@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 
-import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
@@ -15,7 +14,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Gallery;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -111,8 +109,8 @@ public class AddCarFragment extends Fragment {
         etEngine_capacity=getView().findViewById(R.id.etEngineCapacityAddFragment);
         etGear_shifting_model=getView().findViewById(R.id.etGearShiftAddFragment);
         etPrice=getView().findViewById(R.id.etPriceAddFragment);
-        btnAdd = getView().findViewById(R.id.btnAddCarFragment);
-        img = getView().findViewById(R.id.imageView);
+        btnAddCar = getView().findViewById(R.id.btnAddCarFragment);
+        img = getView().findViewById(R.id.ivCarAddCarFragment);
         img.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -125,12 +123,10 @@ public class AddCarFragment extends Fragment {
             }
 
         });
-        btnAdd.setOnClickListener(new View.OnClickListener() {
+        btnAddCar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // get data from screen
                 utils = Utils.getInstance();
-                String address = etAddress.getText().toString();
                 String phone = etPhone.getText().toString();
                 String nameCar=etname.getText().toString();
                 String horse_power=ethorse_power.getText().toString();
@@ -160,13 +156,18 @@ public class AddCarFragment extends Fragment {
                 }
 
                 // add data to firestore
-                String price = "";
-                String photo = "";
-                Car rest = new Car(name, horse_power, owners, phone,
-                        car_num, manufacturer, Car_model,
-                        test, kilometre, Engine_capacity, Gear_shifting_model, price, fbs.getSelectedImageURL().toString());
+                Car car;
+                if (fbs.getSelectedImageURL() == null)
+                    car = new Car( nameCar, horse_power, owners, phone,
+                            car_num, manufacturer, Car_model,
+                            test, kilometre, Engine_capacity, Gear_shifting_model, price, fbs.getSelectedImageURL().toString());
+                else
+                    car = new Car(nameCar, horse_power, owners, phone,
+                            car_num, manufacturer, Car_model,
+                            test, kilometre, Engine_capacity, Gear_shifting_model, price, fbs.getSelectedImageURL().toString());
 
-                fbs.getFire().collection("Cars").add(rest).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+
+                fbs.getFire().collection("Cars").add(car).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                     @Override
                     public void onSuccess(DocumentReference documentReference) {
                         Toast.makeText(getActivity(), "Successfully added your Car!", Toast.LENGTH_SHORT).show();

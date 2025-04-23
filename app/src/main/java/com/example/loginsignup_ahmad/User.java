@@ -1,5 +1,7 @@
 package com.example.loginsignup_ahmad;
 
+import android.os.Parcel;
+
 public class User {   private String id;
     private String firstName;
     private String lastName;
@@ -8,7 +10,7 @@ public class User {   private String id;
     private String username;
     private String photo;
 
-    public User() {
+    public User(Parcel in) {
     }
 
     public User(String id, String firstName, String lastName, String birthdate, String phone, String username, String photo) {

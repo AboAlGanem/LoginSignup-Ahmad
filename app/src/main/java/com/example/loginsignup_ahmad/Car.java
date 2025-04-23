@@ -3,8 +3,7 @@ package com.example.loginsignup_ahmad;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-public class Car {
-    public class Car implements Parcelable {
+public class Car implements Parcelable {
         private String nameCar;
         private  String horse_power;
         private  String owners;
@@ -21,7 +20,7 @@ public class Car {
         private  String   price;
         private String photo;
 
-        public Car() {
+        public Car(String nameCar, String horse_power, String owners, String phone, String car_num, String manufacturer, String car_model, String test, String kilometre, String engine_capacity, String gear_shifting_model, String price, String string) {
         }
 
         public Car(String nameCar, String horse_power, String owners, String phone, String color,
@@ -74,7 +73,12 @@ public class Car {
             }
         };
 
-        @Override
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
         public void writeToParcel(Parcel dest, int flags) {
             dest.writeString(this.nameCar);
             dest.writeString(this.horse_power);
@@ -234,9 +238,7 @@ public class Car {
                     '}';
         }
 
-
     }
 
-}
 
 

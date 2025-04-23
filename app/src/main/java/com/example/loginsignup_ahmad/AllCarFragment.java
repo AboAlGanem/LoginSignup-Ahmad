@@ -4,9 +4,11 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.os.Parcelable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -29,7 +31,7 @@ import java.util.ArrayList;
  */
 public class AllCarFragment extends Fragment {
     private FireBaseServices fbs;
-    private ArrayList<Car> rests;
+    private ArrayList<Car> rests,filteredList;
     private RecyclerView rvRests;
     private CarAdapter adapter;
 
@@ -96,7 +98,7 @@ public class AllCarFragment extends Fragment {
             @Override
             public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
 
-                for (DocumentSnapshot dataSnapshot: queryDocumentSnapshots.getDocuments()){
+                for (DocumentSnapshot dataSnapshot : queryDocumentSnapshots.getDocuments()) {
                     Car rest = dataSnapshot.toObject(Car.class);
 
                     rests.add(rest);
@@ -111,6 +113,6 @@ public class AllCarFragment extends Fragment {
                 Log.e("AllCarFragment", e.getMessage());
             }
         });
-    }
-}
 
+
+    }}
