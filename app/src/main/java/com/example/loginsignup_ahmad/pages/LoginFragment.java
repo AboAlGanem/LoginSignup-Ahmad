@@ -155,4 +155,9 @@ public class LoginFragment extends Fragment {
         ft.replace(R.id.FrameLayoutsMain, new AddCarFragment());
         ft.commit();
     }
+    private void goToHomeFragment() {
+        FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.FrameLayoutsMain, new HomeFragment());
+        ft.commit();
+    }
 }

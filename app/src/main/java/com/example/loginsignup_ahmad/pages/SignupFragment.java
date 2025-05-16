@@ -4,12 +4,14 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.loginsignup_ahmad.Data.FireBaseServices;
@@ -24,9 +26,10 @@ import com.google.firebase.auth.AuthResult;
  * create an instance of this fragment.
  */
 public class SignupFragment extends Fragment {
-    private EditText etUsername, etpassword;
-    private Button btnSignup;
+    private EditText etEmail , etPassword , etConfirmPassword , etFullName;
+    private Button btnSignUp;
     private FireBaseServices fbs;
+    private TextView tvLogin;
 
 
     // TODO: Rename parameter arguments, choose names that match
@@ -79,19 +82,22 @@ public class SignupFragment extends Fragment {
     public void onStart() {
         super.onStart();
         fbs = FireBaseServices.getInstance();
-        etUsername = getView().findViewById(R.id.etUserNameSignup);
-        etpassword = getView().findViewById(R.id.etpasswordSignup);
-        btnSignup = getView().findViewById(R.id.btnsignup);
-        btnSignup.setOnClickListener(new View.OnClickListener() {
+        etEmail = getView().findViewById(R.id.etEmailSignUpFragment);
+        etPassword = getView().findViewById(R.id.etPasswordSignUpFragment);
+        etConfirmPassword = getView().findViewById(R.id.etConfirmPasswordSignUpFragment);
+        btnSignUp = getView().findViewById(R.id.btnSignUpSignUpFragment);
+        tvLogin = getView().findViewById(R.id.tvLoginSignUpFragment);
+        etFullName = getView().findViewById(R.id.etFullNameSignUpFragment);
+        btnSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String username = etUsername.getText().toString();
-                String password = etpassword.getText().toString();
-                if (username.trim().isEmpty() && password.trim().isEmpty()) {
+                String Email = etEmail.getText().toString();
+                String password = etPassword.getText().toString();
+                if (Email.trim().isEmpty() && password.trim().isEmpty()) {
                     Toast.makeText(getActivity(), "some fields are empty !!", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                fbs.getAuth().createUserWithEmailAndPassword(username, password).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
+                fbs.getAuth().createUserWithEmailAndPassword(Email, password).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
                     @Override
                     public void onSuccess(AuthResult authResult) {
                         Toast.makeText(getActivity(), "Successfully signed up", Toast.LENGTH_SHORT).show();
@@ -107,5 +113,16 @@ public class SignupFragment extends Fragment {
             }
         });
     }
+    private void goToLoginFragment(){
+        FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.FrameLayoutsMain, new LoginFragment());
+        ft.commit();
+    }
+    private void goToHomeFragment() {
+        FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.FrameLayoutsMain, new HomeFragment());
+        ft.commit();
+    }
+
 }
 
