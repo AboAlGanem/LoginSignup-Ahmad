@@ -1,15 +1,10 @@
-package com.example.loginsignup_ahmad;
+package com.example.loginsignup_ahmad.pages;
 
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
-import android.os.Parcelable;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,23 +12,21 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.loginsignup_ahmad.Data.FireBaseServices;
+import com.example.loginsignup_ahmad.R;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
-
-import java.util.ArrayList;
+import com.google.firebase.auth.AuthResult;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link AllCarFragment#newInstance} factory method to
+ * Use the {@link SignupFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class AllCarFragment extends Fragment {
+public class SignupFragment extends Fragment {
+    private EditText etUsername, etpassword;
+    private Button btnSignup;
     private FireBaseServices fbs;
-    private ArrayList<Car> rests,filteredList;
-    private RecyclerView rvRests;
-    private CarAdapter adapter;
 
 
     // TODO: Rename parameter arguments, choose names that match
@@ -45,7 +38,7 @@ public class AllCarFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public AllCarFragment() {
+    public SignupFragment() {
         // Required empty public constructor
     }
 
@@ -55,11 +48,11 @@ public class AllCarFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment AllCarFragment.
+     * @return A new instance of fragment SignupFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static AllCarFragment newInstance(String param1, String param2) {
-        AllCarFragment fragment = new AllCarFragment();
+    public static SignupFragment newInstance(String param1, String param2) {
+        SignupFragment fragment = new SignupFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -80,39 +73,39 @@ public class AllCarFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_all_car, container, false);
+        return inflater.inflate(R.layout.fragment_signup, container, false);
     }
-
     @Override
     public void onStart() {
         super.onStart();
-
         fbs = FireBaseServices.getInstance();
-        rests = new ArrayList<>();
-        rvRests = getView().findViewById(R.id.rvCarsRestFragment);
-        adapter = new CarAdapter(getActivity(), rests);
-        rvRests.setAdapter(adapter);
-        rvRests.setHasFixedSize(true);
-        rvRests.setLayoutManager(new LinearLayoutManager(getActivity()));
-        fbs.getFire().collection("Cars").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+        etUsername = getView().findViewById(R.id.etUserNameSignup);
+        etpassword = getView().findViewById(R.id.etpasswordSignup);
+        btnSignup = getView().findViewById(R.id.btnsignup);
+        btnSignup.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-
-                for (DocumentSnapshot dataSnapshot : queryDocumentSnapshots.getDocuments()) {
-                    Car rest = dataSnapshot.toObject(Car.class);
-
-                    rests.add(rest);
+            public void onClick(View view) {
+                String username = etUsername.getText().toString();
+                String password = etpassword.getText().toString();
+                if (username.trim().isEmpty() && password.trim().isEmpty()) {
+                    Toast.makeText(getActivity(), "some fields are empty !!", Toast.LENGTH_SHORT).show();
+                    return;
                 }
+                fbs.getAuth().createUserWithEmailAndPassword(username, password).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
+                    @Override
+                    public void onSuccess(AuthResult authResult) {
+                        Toast.makeText(getActivity(), "Successfully signed up", Toast.LENGTH_SHORT).show();
+                    }
 
-                adapter.notifyDataSetChanged();
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                Toast.makeText(getActivity(), "No data available", Toast.LENGTH_SHORT).show();
-                Log.e("AllCarFragment", e.getMessage());
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(getActivity(), "Something went wrong!", Toast.LENGTH_SHORT).show();
+                    }
+                });
+
             }
         });
+    }
+}
 
-
-    }}

@@ -1,4 +1,4 @@
-package com.example.loginsignup_ahmad;
+package com.example.loginsignup_ahmad.Activites;
 
 import android.os.Bundle;
 
@@ -8,6 +8,9 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.fragment.app.FragmentTransaction;
+
+import com.example.loginsignup_ahmad.pages.LoginFragment;
+import com.example.loginsignup_ahmad.R;
 
 public class MainActivity extends AppCompatActivity {
 

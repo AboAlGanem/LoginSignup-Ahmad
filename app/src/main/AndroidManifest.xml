@@ -13,10 +13,10 @@
         android:theme="@style/Theme.LoginSignupAhmad"
         tools:targetApi="31">
         <activity
-            android:name=".DrawerActivity"
+            android:name=".Activites.DrawerActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".Activites.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

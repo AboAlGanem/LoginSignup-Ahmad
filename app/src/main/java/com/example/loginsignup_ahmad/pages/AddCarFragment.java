@@ -1,4 +1,4 @@
-package com.example.loginsignup_ahmad;
+package com.example.loginsignup_ahmad.pages;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -17,6 +17,10 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.example.loginsignup_ahmad.Data.Car;
+import com.example.loginsignup_ahmad.Data.FireBaseServices;
+import com.example.loginsignup_ahmad.R;
+import com.example.loginsignup_ahmad.Utilities.Utils;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentReference;

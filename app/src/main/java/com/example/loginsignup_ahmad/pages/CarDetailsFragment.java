@@ -1,4 +1,4 @@
-package com.example.loginsignup_ahmad;
+package com.example.loginsignup_ahmad.pages;
 
 import android.Manifest;
 import android.content.Intent;
@@ -20,6 +20,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.loginsignup_ahmad.Data.Car;
+import com.example.loginsignup_ahmad.Data.FireBaseServices;
+import com.example.loginsignup_ahmad.R;
 import com.squareup.picasso.Picasso;
 
 /**

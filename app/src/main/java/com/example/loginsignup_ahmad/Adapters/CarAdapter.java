@@ -1,4 +1,4 @@
-package com.example.loginsignup_ahmad;
+package com.example.loginsignup_ahmad.Adapters;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -13,6 +13,11 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.loginsignup_ahmad.Activites.MainActivity;
+import com.example.loginsignup_ahmad.pages.CarDetailsFragment;
+import com.example.loginsignup_ahmad.Data.Car;
+import com.example.loginsignup_ahmad.Data.FireBaseServices;
+import com.example.loginsignup_ahmad.R;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;

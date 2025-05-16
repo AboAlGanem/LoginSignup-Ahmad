@@ -1,11 +1,8 @@
-package com.example.loginsignup_ahmad;
+package com.example.loginsignup_ahmad.pages;
 
 import static android.app.PendingIntent.getActivity;
 
-import static androidx.core.content.ContextCompat.startActivity;
-
 import android.app.ProgressDialog;
-import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -21,9 +18,9 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.loginsignup_ahmad.Data.FireBaseServices;
+import com.example.loginsignup_ahmad.R;
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 
@@ -106,12 +103,6 @@ public class LoginFragment extends Fragment {
             }
         });
 
-        btnBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                goToMainFragment();
-            }
-        });
         tvForgetPassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -150,12 +141,6 @@ public class LoginFragment extends Fragment {
     private void goToSignUpFragment() {
         FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
         ft.replace(R.id.FrameLayoutsMain, new SignupFragment());
-        ft.commit();
-    }
-
-    private void goToMainFragment() {
-        FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
-        ft.replace(R.id.FrameLayoutsMain, new MainFragment());
         ft.commit();
     }
 
