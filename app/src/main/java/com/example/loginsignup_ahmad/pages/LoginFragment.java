@@ -125,7 +125,7 @@ public class LoginFragment extends Fragment {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             //TODO: decide what to do
-                            //goToHomeFragment();
+                            goToHomeFragment();
                             dialog.dismiss();
                         } else {
                             dialog.dismiss();
