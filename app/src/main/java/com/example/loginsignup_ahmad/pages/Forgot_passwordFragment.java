@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.example.loginsignup_ahmad.Data.FireBaseServices;
@@ -27,6 +28,7 @@ public class Forgot_passwordFragment extends Fragment {
     private FireBaseServices fbs;
     private EditText etEmail;
     private Button btnReset;
+    private ImageButton btnBack;
 
 
     // TODO: Rename parameter arguments, choose names that match
@@ -80,8 +82,14 @@ public class Forgot_passwordFragment extends Fragment {
         super.onStart();
         fbs = FireBaseServices.getInstance();
         etEmail = getView().findViewById(R.id.etEmailForgetPasswordFragment);
-        btnReset = getView().findViewById(R.id.btnResetForgetPasswordFragment);
+        btnBack = getView().findViewById(R.id.btnBackForgetPasswordFragment);
         btnReset=getView().findViewById(R.id.btnResetForgetPasswordFragment);
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                goToLoginFragment();
+            }
+        });
         btnReset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

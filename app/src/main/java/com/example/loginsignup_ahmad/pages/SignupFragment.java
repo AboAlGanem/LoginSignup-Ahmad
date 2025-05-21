@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -30,6 +31,7 @@ public class SignupFragment extends Fragment {
     private Button btnSignUp;
     private FireBaseServices fbs;
     private TextView tvLogin;
+    private ImageButton btnBack;
 
 
     // TODO: Rename parameter arguments, choose names that match
@@ -88,6 +90,20 @@ public class SignupFragment extends Fragment {
         btnSignUp = getView().findViewById(R.id.btnSignUpSignUpFragment);
         tvLogin = getView().findViewById(R.id.tvLoginSignUpFragment);
         etFullName = getView().findViewById(R.id.etFullNameSignUpFragment);
+        btnBack = getView().findViewById(R.id.btnBackSignUpFragment);
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                goToLoginFragment();
+            }
+        });
+
+        tvLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                goToLoginFragment();
+            }
+        });
         btnSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -101,6 +117,7 @@ public class SignupFragment extends Fragment {
                     @Override
                     public void onSuccess(AuthResult authResult) {
                         Toast.makeText(getActivity(), "Successfully signed up", Toast.LENGTH_SHORT).show();
+                        goToHomeFragment();
                     }
 
                 }).addOnFailureListener(new OnFailureListener() {
