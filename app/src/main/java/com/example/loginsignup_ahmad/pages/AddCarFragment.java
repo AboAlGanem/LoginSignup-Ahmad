@@ -71,7 +71,7 @@ public class AddCarFragment extends Fragment {
         btnAddCar = getView().findViewById(R.id.btnAddCarFragment);
         img = getView().findViewById(R.id.ivCarAddCarFragment);
 
-        // إعداد Launcher لاختيار صورة من المعرض
+
         imagePickerLauncher = registerForActivityResult(
                 new ActivityResultContracts.GetContent(),
                 uri -> {

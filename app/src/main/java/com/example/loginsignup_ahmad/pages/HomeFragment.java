@@ -1,8 +1,10 @@
 package com.example.loginsignup_ahmad.pages;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,6 +13,7 @@ import android.widget.ImageView;
 
 import com.example.loginsignup_ahmad.Data.FireBaseServices;
 import com.example.loginsignup_ahmad.R;
+import com.google.android.material.button.MaterialButton;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -19,7 +22,8 @@ import com.example.loginsignup_ahmad.R;
  */
 public class HomeFragment extends Fragment {
     private FireBaseServices fbs;
-    private ImageView ivLogo;
+    private MaterialButton btnAddNewProduct, btnAllProducts;
+
 
 
     // TODO: Rename parameter arguments, choose names that match
@@ -66,6 +70,25 @@ public class HomeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_home, container, false);
+        View view = inflater.inflate(R.layout.fragment_home, container, false);
+
+        btnAddNewProduct = view.findViewById(R.id.btnAddNewProduct);
+        btnAllProducts = view.findViewById(R.id.btnAllProducts);
+
+        btnAddNewProduct.setOnClickListener(v -> {
+            FragmentTransaction ft = requireActivity().getSupportFragmentManager().beginTransaction();
+            ft.replace(R.id.FrameLayoutsMain, new AddCarFragment());
+            ft.addToBackStack(null);
+            ft.commit();
+        });
+
+        btnAllProducts.setOnClickListener(v -> {
+            FragmentTransaction ft = requireActivity().getSupportFragmentManager().beginTransaction();
+            ft.replace(R.id.FrameLayoutsMain, new AllCarFragment());
+            ft.addToBackStack(null);
+            ft.commit();
+        });
+
+        return view;
     }
-}
+    }
