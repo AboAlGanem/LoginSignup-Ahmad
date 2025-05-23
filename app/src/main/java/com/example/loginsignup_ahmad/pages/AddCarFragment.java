@@ -25,8 +25,8 @@ import com.google.android.gms.tasks.OnSuccessListener;
 public class AddCarFragment extends Fragment {
 
     private ImageView img;
-    private EditText etname, ethorse_power, etOwners, etColor, etCar_num, etManufacturer,
-            etYear, etCar_model, etTest, etkilometre, etEngine_capacity, etGear_shifting_model, etPrice, etPhone;
+    private EditText etname, ethorse_power, etOwners, etCar_num, etManufacturer,
+            etCar_model, etTest, etkilometre, etEngine_capacity, etGear_shifting_model, etPrice, etPhone;
     private Button btnAddCar;
     private FireBaseServices fbs;
     private Utils utils;
