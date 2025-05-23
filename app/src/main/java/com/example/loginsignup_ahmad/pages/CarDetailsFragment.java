@@ -154,20 +154,18 @@ public class CarDetailsFragment extends Fragment {
                 tvPhone.setText(myCar.getPhone());
                 tvCar_num.setText(myCar.getCar_num());
                 tvManufacturer.setText(myCar.getManufacturer());
-                tvYear.setText(myCar.getYear());
-                tvColor.setText(myCar.getColor());
                 tvCar_model.setText(myCar.getCar_model());
                 tvTest.setText(myCar.getTest());
                 tvkilometre.setText(myCar.getKilometre()+" Km");
                 tvEngine_capacity.setText(myCar.getEngine_capacity());
                 tvGear_shifting_model.setText(myCar.getGear_shifting_model());
                 tvPrice.setText(myCar.getPrice()+" ₪");
-                if (myCar.getPhoto() == null || myCar.getPhoto().isEmpty())
+                if (myCar.getImageUrl() == null || myCar.getImageUrl().isEmpty())
                 {
                     Picasso.get().load(R.drawable.img).into(ivCarPhoto);
                 }
                 else {
-                    Picasso.get().load(myCar.getPhoto()).into(ivCarPhoto);
+                    Picasso.get().load(myCar.getImageUrl()).into(ivCarPhoto);
                 }
             }
         }

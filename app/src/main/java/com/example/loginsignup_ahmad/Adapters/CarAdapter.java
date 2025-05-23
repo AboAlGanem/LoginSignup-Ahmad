@@ -46,7 +46,6 @@ import java.util.ArrayList;
             Car car = restList.get(position);
             holder.carName.setText(car.getNameCar());
             holder.Price.setText(car.getPrice() + " ₪");
-            holder.Year.setText(car.getYear());
             holder.location.setText(car.getHorse_power() + "Hp");
             holder.GearShift.setText(car.getGear_shifting_model());
             holder.kilometre.setText(car.getKilometre() + "Km");
@@ -55,10 +54,10 @@ import java.util.ArrayList;
                     itemClickListener.onItemClick(position);
                 }
             });
-            if (car.getPhoto() == null || car.getPhoto().isEmpty()) {
+            if (car.getImageUrl() == null || car.getImageUrl().isEmpty()) {
                 Picasso.get().load(R.drawable.ic_launcher_background).into(holder.ivCar);
             } else {
-                Picasso.get().load(car.getPhoto()).into(holder.ivCar);
+                Picasso.get().load(car.getImageUrl()).into(holder.ivCar);
             }
             holder.ivFavourite.setOnClickListener(new View.OnClickListener() {
                 @Override
